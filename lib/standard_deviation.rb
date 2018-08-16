@@ -1,5 +1,27 @@
+require 'pry'
+
+
 ages = [24, 30, 18, 20, 41]
 
-# Your code here for calculating the standard deviation
+sum = ages.sum
 
-# When you find the standard deviation, print it out
+count = ages.count
+
+average = sum/count.to_f.round(2)
+
+differences = []
+ages.each do |age|
+  differences << age - average
+end
+
+squares = []
+differences.each do |difference|
+  squares << difference**2
+end
+
+
+squared_sum = squares.sum
+
+divided_sum = squared_sum / count
+
+puts Math.sqrt(divided_sum).round(2)
