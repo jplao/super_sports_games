@@ -24,24 +24,32 @@ class Event
   def standard_deviation_age
     sum = ages.sum
     count = ages.count
-    average = sum/count.to_f
+    average = sum/count.round(1)
 
     differences = []
     ages.each do |age|
-      differences << age - average
+      difference = age - average
+      differences << difference.round(1)
     end
+    differences
 
     squares = []
     differences.each do |difference|
-    squares << difference**2
+      square = difference**2
+      squares << square.round(2)
+    end
+    squares
+
+    squared_sum = 0
+    squares.each do |square|
+      squared_sum += square
     end
 
-    squared_sum = squares.sum
+    squared_sum.round(1)
 
     divided_sum = squared_sum/count
+    divided_sum.round(2)
 
     Math.sqrt(divided_sum).round(2)
   end
 end
-
-binding.pry
